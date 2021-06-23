@@ -39,18 +39,12 @@ int main(int argc, char **argv)
 	paramblk[0x48>>2] = 0x8d;//flags
 	paramblk[0x58>>2] = (u32)&gspGpuHandle;
 	
+	svcSleepThread(100*1000*1000);
 	otherapp(paramblk, (u32*)(0x10000000-0x1000));
 
-	printf("Press the START button to exit.\n");  //we won't get here
+	svcSleepThread(1000*1000*1000);  //we won't get here
 
-	while (aptMainLoop())
-	{
-		gspWaitForVBlank();
-		hidScanInput();
-
-		u32 kDown = hidKeysDown();
-		if (kDown & KEY_START) break;
-	}
+	while(1) gspWaitForVBlank();
 
 	gfxExit();
 	return 0;
