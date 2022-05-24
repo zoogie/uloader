@@ -5,7 +5,7 @@
 ifeq ($(strip $(DEVKITARM)),)
 $(error "Please set DEVKITARM in your environment. export DEVKITARM=<path to>devkitARM")
 endif
-export CTRULIB=$(shell pwd)/libctru
+
 TOPDIR ?= $(CURDIR)
 include $(DEVKITARM)/3ds_rules
 

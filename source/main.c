@@ -7,7 +7,6 @@
 #include <3ds.h>
 
 #define VERSION "1.0"
-extern Handle gspGpuHandle;
 
 void gxlowcmd_4(u32* inadr, u32* outadr, u32 size, u32 width0, u32 height0, u32 width1, u32 height1, u32 flags)
 {
@@ -25,6 +24,8 @@ int main(int argc, char **argv)
 	printf("uloader %s by zoogie\n", VERSION);
 	//ret = svcFlushProcessDataCache(0xffff8001, (u32)PAYLOAD_TEXTADDR, payloadsize_aligned);
 
+	Handle *gspGpuHandle=gspGetSessionHandle();
+	
 	u32 *paramblk = linearMemAlign(0x10000, 0x1000);
 	if(paramblk==NULL)
 	{
@@ -37,7 +38,7 @@ int main(int argc, char **argv)
 	paramblk[0x1c>>2] = (u32)gxlowcmd_4;
 	paramblk[0x20>>2] = (u32)GSPGPU_FlushDataCache;
 	paramblk[0x48>>2] = 0x8d;//flags
-	paramblk[0x58>>2] = (u32)&gspGpuHandle;
+	paramblk[0x58>>2] = (u32)gspGpuHandle;
 	
 	svcSleepThread(100*1000*1000);
 	otherapp(paramblk, (u32*)(0x10000000-0x1000));
