@@ -1,0 +1,3 @@
+[submodule "universal-otherapp"]
+	path = universal-otherapp
+	url = https://github.com/TuxSH/universal-otherapp.git
