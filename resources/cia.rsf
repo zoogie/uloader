@@ -1,0 +1,68 @@
+BasicInfo:
+  Title                   : "uloader"
+  CompanyCode             : "00"
+  ProductCode             : "CTR-P-LOAD"
+  ContentType             : Application
+  Logo                    : Homebrew # Nintendo / Licensed / Distributed / iQue / iQueForSystem
+
+RomFs:
+  # Specifies the root path of the read only file system to include in the ROM.
+  #RootPath                : "romfs"
+  
+TitleInfo:
+  UniqueId                : 0xCCC8C # test Example Unique ID, you need to set your own one
+  Category                : Application
+  
+CardInfo:
+  MediaSize               : 128MB # 128MB / 256MB / 512MB / 1GB / 2GB / 4GB
+  MediaType               : Card1 # Card1 / Card2
+  CardDevice              : None # NorFlash(Pick this if you use savedata) / None
+  
+
+Option:
+  UseOnSD                 : true # true if App is to be installed to SD
+  FreeProductCode         : true # Removes limitations on ProductCode
+  MediaFootPadding        : false # If true CCI files are created with padding
+  EnableCrypt             : false # Enables encryption for NCCH and CIA
+  EnableCompress          : true # Compresses exefs code
+
+SystemControlInfo:
+  SaveDataSize: 0KB
+  RemasterVersion: 0
+  StackSize: 0x40000
+  
+# DO NOT EDIT BELOW HERE OR PROGRAMS WILL NOT LAUNCH (most likely)
+
+AccessControlInfo:
+  FileSystemAccess:
+   - CategorySystemApplication
+   - CategoryHardwareCheck
+   - CategoryFileSystemTool
+   - Debug
+   - TwlCardBackup
+   - TwlNandData
+   - Boss
+   - DirectSdmc
+   - Core
+   - CtrNandRo
+   - CtrNandRw
+   - CtrNandRoWrite
+   - CategorySystemSettings
+   - CardBoard
+   - ExportImportIvs
+   - DirectSdmcWrite
+   - SwitchCleanup
+   - SaveDataMove
+   - Shop
+   - Shell
+   - CategoryHomeMenu
+   - SeedDB
+  IoAccessControl:
+   - FsMountNand
+   - FsMountNandRoWrite
+   - FsMountTwln
+   - FsMountWnand
+   - FsMountCardSpi
+   - UseSdif3
+   - CreateSeed
+   - UseCardSpi
